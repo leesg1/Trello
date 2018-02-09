@@ -1,0 +1,141 @@
+<% include ../partials/header %>
+
+
+<style>
+
+.col{
+    border-radius: 15px;
+    border-style: solid;
+    background:  #d9d9d9;   
+}
+h4{
+    text-align: center;
+}
+.background{
+    background:  #d9d9d9;
+}
+.buttons{
+    justify-content: center;
+    display: flex; 
+}
+.card-override{
+    border: 0;
+    border-radius: 25px;
+
+    margin: 10px;
+}
+.button-colour{
+}
+.colour{
+    background:PowderBlue;
+}
+.todo{
+    background: orangered;
+}
+.doing{
+    background: Orange;
+}
+.done{
+    background: limegreen;
+}
+.bodycolour{
+    background: PowderBlue;
+}
+</style>
+
+<!--
+<h2>Drag and Drop</h2>
+<p>Drag the image back and forth between the two div elements.</p>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <img src="https://vignette.wikia.nocookie.net/mrmen/images/5/52/Small.gif/revision/latest?cb=20100731114437" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
+</div>
+
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+-->
+
+
+<body>
+<div class="container">
+    <div class="col-xs-4 col">
+        <% cards.forEach(function(card){ %>
+           <% if(card.status=="ToDo"){ %>
+                <div class="row card card-override background">
+                    <div class="card todo " >
+                        <div class="card-block">
+                            <h4 class="card-title"><%=card.name%></h4>
+                            <blockquote><%=card.category%></blockquote>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                        <div class="card-block">
+                            <a href="/trello/<%=card._id%>/edit" class="btn btn-primary">Edit</a>
+                        </div>
+                            <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+                    </div>
+                </div>
+            <% } %>
+        <% }) %>
+    </div>
+    
+    <div class="col-xs-4 col">
+        <% cards.forEach(function(card){ %>
+            <% if(card.status=="Doing"){ %>
+                <div class="row card card-override background">
+                    <div class="card doing">
+                        <div class="card-block">
+                            <h4 class="card-title"><%=card.name%></h4>
+                            <blockquote><%=card.category%></blockquote>
+
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                        <div class="card-block">
+                            <a href="/trello/<%=card._id%>/edit" class="btn btn-primary">Edit</a>
+                        </div>
+                            <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+                    </div>
+                </div>
+            <% } %>
+
+        <% }) %>
+  </div>
+  
+      <div class="col-xs-4 col">
+            <% cards.forEach(function(card){ %>
+                <% if(card.status=="Done"){ %>
+                <div class="row card  card-override background">
+                    <div class="card done">
+                        <div class="card-block">
+                            <h4 class="card-title"><%=card.name%></h4>
+                            <blockquote><%=card.category%></blockquote>
+
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                        <div class="card-block">
+                            <a href="/trello/<%=card._id%>/edit" class="btn btn-primary">Edit</a>
+                        </div>
+                            <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+                    </div>
+                </div>
+            <% } %>
+
+            <% }) %>
+        </div>
+</div>
+
+        <form action="https://webdev-thebigjammer.c9users.io/trello/new">
+            <div style="  display: flex;
+  align-items: center;
+  justify-content: center; margin: 25px;">
+   <button class="btn btn-primary buttons" type="submit">Add New Card</button>
+   </div>
+</form>
+ 
+ </body>
+<% include ../partials/footer %>

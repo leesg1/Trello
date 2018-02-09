@@ -1,0 +1,12 @@
+<% include ../partials/header %>
+<h1>Welcome to angular</h1>
+
+
+<h1>Hello,
+    <span ng-if='name'>{{ name }}</span>
+    <span ng-if="!name">World</span>  
+</h1>
+    <input type="text" ng-model="name"/>
+
+
+<% include ../partials/footer %>
